@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Infinite Journey | Since 27.09.25</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Dancing+Script:wght@700&display=swap');
+        :root { --glass: rgba(255, 255, 255, 0.08); --glass-border: rgba(255, 255, 255, 0.15); --accent: #ff4d79; }
+        body { background: #000; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; scroll-behavior: smooth; margin: 0; }
+        #loading-screen { position: fixed; inset: 0; background: #000; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 1s ease; }
+        .video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; background: #000; }
+        .video-bg { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35) saturate(1.2) blur(1px); opacity: 0; transition: opacity 2s ease-in-out; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.9) 100%); z-index: -1; }
+        .glass { background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 24px; }
+        .cursive { font-family: 'Dancing Script', cursive; }
+        .journey-line { position: absolute; left: 20px; width: 2px; height: 100%; background: linear-gradient(to bottom, var(--accent) 0%, rgba(255, 77, 121, 0.2) 80%, transparent 100%); z-index: 0; }
+        @media (min-width: 768px) { .journey-line { left: 50%; transform: translateX(-50%); } }
+        .checkpoint-dot { position: absolute; left: 20px; transform: translateX(-50%); width: 18px; height: 18px; background: #fff; border: 4px solid var(--accent); border-radius: 50%; z-index: 10; }
+        @media (min-width: 768px) { .checkpoint-dot { left: 50%; } }
+        #celebration-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 15px; backdrop-filter: blur(15px); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .pulse-heart { animation: heartBeat 2s infinite; }
+        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .milestone-tag { background: linear-gradient(90deg, var(--accent), #ff8da1); padding: 4px 12px; border-radius: 50px; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="pulse-heart text-4xl mb-4">💖</div>
+        <p class="cursive text-lg opacity-60 text-center px-4">Preparing our world for you, দেহা...</p>
+    </div>
+    <div id="celebration-modal" class="animate__animated animate__fadeIn">
+        <div class="glass p-6 md:p-12 max-w-lg w-full text-center animate__animated animate__zoomIn">
+            <div class="text-5xl mb-6 pulse-heart">💖</div>
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-4">Happy Monthsary <br><span class="text-pink-400">দেহা 🫶🏻</span></h2>
+            <div class="space-y-4 mb-8">
+                <p class="text-lg md:text-2xl cursive text-pink-200">"Every heartbeat of mine belongs to you."</p>
+                <p class="text-sm md:text-lg opacity-80 leading-relaxed italic text-gray-200">
+                    Every 27th is a celebration of the day my world found its axis. You aren't just the woman I love; you're the peace I return to after a long day. I promise to keep adding checkpoints to our journey until we run out of map.
+                </p>
+                <p class="text-sm font-bold text-white uppercase tracking-widest">I love you endlessly, my dear.</p>
+            </div>
+            <button onclick="closeModal()" class="w-full bg-white text-black py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-pink-500 hover:text-white transition-all">Enter Our World</button>
+        </div>
+    </div>
+    <div class="video-container">
+        <video autoplay muted loop playsinline preload="auto" id="mainVideo" class="video-bg">
+            <source src="bg_video.mp4" type="video/mp4">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-starry-night-sky-over-a-calm-lake-40545-large.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="overlay"></div>
+    <section class="min-h-screen flex flex-col items-center justify-center p-6 text-center">
+        <div class="glass p-8 md:p-20 animate__animated animate__fadeInUp w-full max-w-4xl">
+            <div class="pulse-heart text-4xl mb-6">❤️</div>
+            <h1 class="text-5xl md:text-8xl font-black mb-4 tracking-tighter uppercase">Our <span class="text-pink-500 font-cursive text-6xl md:text-8xl capitalize">Eternity</span></h1>
+            <p class="text-lg md:text-2xl opacity-50 cursive mb-10 italic">Since 27 September 2025</p>
+            <div id="countdown" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-white">
+                <div class="flex flex-col items-center p-4 glass bg-white/5 border-none">
+                    <span id="days" class="text-3xl md:text-6xl font-bold">00</span>
+                    <span class="text-[8px] uppercase tracking-widest opacity-40 mt-2">Days</span>
+                </div>
+                <div class="flex flex-col items-center p-4 glass bg-white/5 border-none">
+                    <span id="hours" class="text-3xl md:text-6xl font-bold">00</span>
+                    <span class="text-[8px] uppercase tracking-widest opacity-40 mt-2">Hours</span>
+                </div>
+                <div class="flex flex-col items-center p-4 glass bg-white/5 border-none">
+                    <span id="minutes" class="text-3xl md:text-6xl font-bold">00</span>
+                    <span class="text-[8px] uppercase tracking-widest opacity-40 mt-2">Mins</span>
+                </div>
+                <div class="flex flex-col items-center p-4 glass bg-white/5 border-none">
+                    <span id="seconds" class="text-3xl md:text-6xl font-bold text-pink-500">00</span>
+                    <span class="text-[8px] uppercase tracking-widest opacity-40 mt-2">Secs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="journey-container max-w-4xl mx-auto px-6 py-20 relative" id="journey-track">
+        <div class="journey-line"></div>
+    </section>
+    <footer class="py-32 text-center px-6">
+        <div class="glass p-10 inline-block reveal w-full max-w-sm">
+            <h2 class="text-2xl font-black mb-4">Forever Together.</h2>
+            <p class="cursive text-xl opacity-80 text-pink-300">You are my favorite journey, <br>দেহা 🫶🏻</p>
+        </div>
+    </footer>
+    <script>
+        const anniversaryDate = new Date("2025-09-27T00:00:00");
+        const video = document.getElementById('mainVideo');
+        const loading = document.getElementById('loading-screen');
+        video.oncanplaythrough = () => { video.style.opacity = "1"; loading.style.opacity = "0"; setTimeout(() => loading.style.display = "none", 1000); };
+        setTimeout(() => { if(loading.style.display !== "none") { loading.style.opacity = "0"; setTimeout(() => loading.style.display = "none", 1000); } }, 6000);
+        function closeModal() { video.muted = false; video.play().catch(() => {}); const modal = document.getElementById('celebration-modal'); modal.classList.add('animate__fadeOut'); setTimeout(() => modal.style.display = 'none', 500); }
+        const milestones = [
+            { t: "Point Zero", d: "27 Sept 2025: The start of us." },
+            { t: "Month One", d: "Oct 27: Finding magic in your smile." },
+            { t: "Two Months", d: "Nov 27: Our story became my favorite thing." },
+            { t: "Three Months", d: "Dec 27: Our first holidays together." },
+            { t: "New Horizons", d: "Jan 27: Starting the year in your arms." },
+            { t: "Five Months", d: "Feb 27: Choosing you every single day." },
+            { t: "Half Year", d: "Mar 27: 6 months of being the luckiest." }
+        ];
+        function createJourney() {
+            const track = document.getElementById('journey-track');
+            track.innerHTML = '<div class="journey-line"></div>';
+            milestones.forEach((m, i) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = `relative mb-24 reveal pl-12 md:pl-0`;
+                wrapper.innerHTML = `
+                    <div class="checkpoint-dot" style="top: 25px;"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="${i % 2 === 0 ? 'md:text-right md:pr-16' : 'md:col-start-2 md:pl-16 md:text-left'}">
+                            <div class="glass p-6">
+                                <span class="milestone-tag">${i === 0 ? 'Start' : i + ' Months'}</span>
+                                <h3 class="text-xl font-bold text-pink-400 mb-2">${m.t}</h3>
+                                <p class="text-lg cursive opacity-90 text-pink-100">"${m.d}"</p>
+                            </div>
+                        </div>
+                    </div>`;
+                track.appendChild(wrapper);
+            });
+        }
+        function updateTimer() {
+            const now = new Date().getTime();
+            const diff = now - anniversaryDate.getTime();
+            document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }
+        function scrollReveal() { document.querySelectorAll(".reveal").forEach(item => { if (item.getBoundingClientRect().top < window.innerHeight - 100) item.classList.add("active"); }); }
+        window.addEventListener("scroll", scrollReveal);
+        setInterval(updateTimer, 1000);
+        createJourney();
+        updateTimer();
+        if (new Date().getDate() === 27) { document.getElementById('celebration-modal').style.display = 'flex'; if ("vibrate" in navigator) navigator.vibrate([400, 200, 400]); }
+        setTimeout(scrollReveal, 500);
+    </script>
+</body>
+</html>
